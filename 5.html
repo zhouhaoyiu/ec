@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #main {
+        width: 1920px;
+        height: 960px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main"></div>
+  </body>
+
+  <script>
+    const last = [];
+    const current = [];
+    var chartDom = document.getElementById("main");
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      title: {
+        text: "2023&2024年南方、北方、外贸公司YPE订单合计对比表",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "40",
+        },
+        top: "0%",
+        left: "center",
+      },
+      grid: {
+        left: "0%",
+        top: "10%",
+        containLabel: true,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "cross",
+        },
+      },
+      toolbox: {
+        feature: {
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true },
+        },
+      },
+      legend: {
+        data: ["YE4+YBX4小计", "YE5+YBX5小计"],
+        top: "5%",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "30",
+        },
+      },
+      xAxis: [
+        {
+          type: "category",
+          axisTick: {
+            alignWithLabel: true,
+          },
+          axisLabel: {
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+          data: ["2024-04", "2024-05", "2023-05", "24年合计", "23年合计"],
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+          position: "left",
+          alignTicks: true,
+          axisLine: {
+            show: true,
+          },
+          axisLabel: {
+            formatter: "{value}",
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+        },
+      ],
+      series: [
+        {
+          name: "H280及以下",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [1979374.34, 4723974.96, 2194305.5, 15644717.08, 9873649.99],
+        },
+        {
+          name: "H315",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [2281950.06, 4758727.25, 3255467.42, 14646800.96, 15893380.72],
+        },
+        {
+          name: "H355",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [1759154.63, 3243894.0, 3754202.0, 10813719.75, 12349680.0],
+        },
+        {
+          name: "H400",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [834119.0, 1251392.0, 653751.0, 3070648.5, 4867358.8],
+        },
+        {
+          name: "H400以上",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [178000.0, 334000.0, 129010.0, 991150.0, 694010.0],
+        },
+        {
+          name: "合计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [7032598.03, 14311988.21, 9986735.92, 45167036.29, 43678079.51],
+        },
+      ],
+    };
+
+    option && myChart.setOption(option);
+  </script>
+</html>

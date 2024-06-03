@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #main {
+        width: 1920px;
+        height: 960px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main"></div>
+  </body>
+
+  <script>
+    const last = [];
+    const current = [];
+    var chartDom = document.getElementById("main");
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      title: {
+        text: "2023&2024年南方、北方、外贸公司高压发出合计对比表",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "40",
+        },
+        top: "0%",
+        left: "center",
+      },
+      grid: {
+        left: "0%",
+        top: "10%",
+        containLabel: true,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "cross",
+        },
+      },
+      toolbox: {
+        feature: {
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true },
+        },
+      },
+      legend: {
+        data: ["防爆高压", "2级高压", "其他高压", "合计"],
+        top: "5%",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "30",
+        },
+      },
+      xAxis: [
+        {
+          type: "category",
+          axisTick: {
+            alignWithLabel: true,
+          },
+          axisLabel: {
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+          data: ["2024-04", "2024-05", "2023-05", "24年合计", "23年合计"],
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+          name: "Evaporation",
+          position: "left",
+          alignTicks: true,
+          axisLine: {
+            show: true,
+          },
+          axisLabel: {
+            formatter: "{value}",
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+        },
+      ],
+      series: [
+        {
+          name: "防爆高压",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [0, 0, 0, 0, 0],
+        },
+        {
+          name: "2级高压",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [262814.0, 164703.0, 303126.0, 1636346.02, 736126.0],
+        },
+        {
+          name: "其他高压",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [6008120.14, 13368434.72, 11673302.44, 44128720.43, 38260721.1],
+        },
+        {
+          name: "合计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [6270934.14, 13533137.72, 11976428.44, 45765066.45, 38996847.1],
+        },
+      ],
+    };
+
+    option && myChart.setOption(option);
+  </script>
+</html>

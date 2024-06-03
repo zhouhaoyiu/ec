@@ -1,0 +1,7 @@
+{  
+  "ignore": ["**/*.json"],  
+  "watch": ["server/", "app/", "lib/", "routes/"],  
+  "ext": ".js",  
+  "verbose": true,  
+  "legacy-watch": false  
+}

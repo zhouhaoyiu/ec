@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #main {
+        width: 1920px;
+        height: 960px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main"></div>
+  </body>
+
+  <script>
+    const last = [];
+    const current = [];
+    var chartDom = document.getElementById("main");
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      title: {
+        text: "2023&2024年南方、北方、外贸防爆发出合计对比表",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "40",
+        },
+        top: "0%",
+        left: "center",
+      },
+      grid: {
+        left: "0%",
+        top: "10%",
+        containLabel: true,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "cross",
+        },
+      },
+      toolbox: {
+        feature: {
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true },
+        },
+      },
+      legend: {
+        data: ["YBX3", "YBX4", "YBX5", "YBBP", "ABP", "防爆高压", "合计"],
+        top: "5%",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "30",
+        },
+      },
+      xAxis: [
+        {
+          type: "category",
+          axisTick: {
+            alignWithLabel: true,
+          },
+          axisLabel: {
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+          data: ["2024-04", "2024-05", "2023-05", "24年合计", "23年合计"],
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+          position: "left",
+          alignTicks: true,
+          axisLine: {
+            show: true,
+          },
+          axisLabel: {
+            formatter: "{value}",
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+        },
+      ],
+      series: [
+        {
+          name: "YBX3",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [285005.46, 198141.82, 283591.0, 1115550.4, 897228.52],
+        },
+        {
+          name: "YBX4",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [328224.91, 509165.43, 128171.0, 1740549.9, 1197642.7],
+        },
+        {
+          name: "YBX5",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [211762.0, 436645.0, 546956.0, 1978229.0, 4477268.88],
+        },
+        {
+          name: "YBBP",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [271440.81, 260671.0, 275207.0, 1004551.81, 1000417.0],
+        },
+        {
+          name: "ABP",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [15425.0, 301921.0, 26508.0, 537311.0, 45536.0],
+        },
+        {
+          name: "防爆高压",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [0, 0, 0, 0, 0],
+        },
+        {
+          name: "合计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [1111858.18, 1706544.25, 1260433.0, 6376192.11, 7618093.1],
+        },
+      ],
+    };
+
+    option && myChart.setOption(option);
+  </script>
+</html>

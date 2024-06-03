@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="./echarts.js"></script>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #main {
+      width: 1920px;
+      height: 960px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main"></div>
+</body>
+
+<script>
+  const last = [];
+  const current = [];
+  var chartDom = document.getElementById("main");
+  var myChart = echarts.init(chartDom);
+  var option;
+
+  option = {
+    title: {
+      text: "2021&2022年（H315～400）及高压排产",
+      textStyle: {
+        // color: "#fff",
+        fontSize: "40",
+      },
+      top: "0%",
+      left: "center",
+    },
+    grid: {
+      left: "0%",
+      top: "10%",
+      containLabel: true,
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "cross",
+      },
+    },
+    toolbox: {
+      feature: {
+        dataView: { show: true, readOnly: false },
+        restore: { show: true },
+        saveAsImage: { show: true },
+      },
+    },
+    legend: {
+      data: ["H315", "H355", "H400", "高压", "合计"],
+      top: "5%",
+      textStyle: {
+        // color: "#fff",
+        fontSize: "30",
+      },
+    },
+    xAxis: [
+      {
+        type: "category",
+        axisTick: {
+          alignWithLabel: true,
+        },
+        axisLabel: {
+          textStyle: {
+            // color: "#fff",
+            fontSize: "30",
+          },
+        },
+        // prettier-ignore
+        data: ['2022-06', '2022-07', '2021-07', '22年合计', '21年合计'],
+      },
+    ],
+    yAxis: [
+      {
+        type: "value",
+        position: "left",
+        alignTicks: true,
+        axisLine: {
+          show: true,
+        },
+        axisLabel: {
+          formatter: "{value}",
+          textStyle: {
+            // color: "#fff",
+            fontSize: "30",
+          },
+        },
+      },
+    ],
+    series: [
+      {
+        name: "H315",
+        type: "bar",
+        label: {
+          position: "top",
+          show: true,
+        },
+        data: [17832374.88,
+          10435724.33,
+          9719855.53,
+          87795078.82,
+          72250238.86
+        ],
+      },
+      {
+        name: "H355",
+        type: "bar",
+        label: {
+          position: "top",
+          show: true,
+        },
+        data: [10331999.38,
+          7372049.80,
+          5465578.34,
+          48999326.69,
+          45606108.83
+        ],
+      },
+      {
+        name: "H400",
+        type: "bar",
+        label: {
+          show: true,
+          position: "top",
+        },
+        data: [2035488.00,
+          3077401.42,
+          3572514.02,
+          13405441.86,
+          18246239.15
+        ],
+      },
+      {
+        name: "高压",
+        type: "bar",
+        label: {
+          show: true,
+          position: "top",
+        },
+        data: [7995242.48,
+          14515604.36,
+          10194193.00,
+          72868463.13,
+          73933776.39,
+        ],
+      },
+      {
+        name: "合计",
+        type: "bar",
+        label: {
+          show: true,
+          position: "top",
+        },
+        data: [
+          38195104.74,
+          35400779.91,
+          28952140.89,
+          223068310.50,
+          210036363.23
+        ],
+      },
+    ],
+  };
+
+  option && myChart.setOption(option);
+</script>
+
+</html>

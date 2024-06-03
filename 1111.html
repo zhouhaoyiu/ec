@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #main {
+        width: 1920px;
+        height: 960px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main"></div>
+  </body>
+
+  <script>
+    const last = [];
+    const current = [];
+    var chartDom = document.getElementById("main");
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      title: {
+        text: "2023&2024年北方公司低压发出对比表",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "40",
+        },
+        top: "0%",
+        left: "center",
+      },
+      grid: {
+        left: "0%",
+        top: "10%",
+        containLabel: true,
+      },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "cross",
+        },
+      },
+      toolbox: {
+        feature: {
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true },
+        },
+      },
+      legend: {
+        data: [
+          "H280及以下小计",
+          "H315小计",
+          "H355小计",
+          "H400小计",
+          "H400以上小计",
+          "合计",
+        ],
+        top: "5%",
+        textStyle: {
+          // color: "#fff",
+          fontSize: "30",
+        },
+      },
+      xAxis: [
+        {
+          type: "category",
+          axisTick: {
+            alignWithLabel: true,
+          },
+          axisLabel: {
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+          data: ["2024-04", "2024-05", "2023-05", "24年合计", "23年合计"],
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+          position: "left",
+          alignTicks: true,
+          axisLine: {
+            show: true,
+          },
+          axisLabel: {
+            formatter: "{value}",
+            textStyle: {
+              // color: "#fff",
+              fontSize: "30",
+            },
+          },
+        },
+      ],
+      series: [
+        {
+          name: "H280及以下小计",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [8508960.4, 9201603.46, 6723117.21, 36765899.28, 35724063.63],
+        },
+        {
+          name: "H315小计",
+          type: "bar",
+          label: {
+            position: "top",
+            show: true,
+          },
+          data: [7800448.2, 3236288.99, 5483065.52, 25280242.45, 22638781.28],
+        },
+        {
+          name: "H355小计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [3581110.41, 3219459.0, 1876052.44, 11906243.61, 13963262.44],
+        },
+        {
+          name: "H400小计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [264500.0, 275519.0, 557190.0, 1345784.0, 2660762.0],
+        },
+        {
+          name: "H400以上小计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [202400.0, 278500.0, 484544.0, 1216210.0, 690099.0],
+        },
+        {
+          name: "合计",
+          type: "bar",
+          label: {
+            show: true,
+            position: "top",
+          },
+          data: [
+            20357419.01, 16211370.45, 15123969.17, 76514379.34, 75676968.35,
+          ],
+        },
+      ],
+    };
+
+    option && myChart.setOption(option);
+  </script>
+</html>
