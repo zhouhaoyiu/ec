@@ -2,5 +2,6 @@
   "dependencies": {
     "express": "^4.22.2",
     "nodemon": "^3.1.0"
-  }
+  },
+  "packageManager": "pnpm@11.9.0"
 }
